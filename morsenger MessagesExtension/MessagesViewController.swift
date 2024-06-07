@@ -66,6 +66,7 @@ class MessagesViewController: MSMessagesAppViewController {
     @IBOutlet weak var transcriptionLabel: UILabel!
     @IBOutlet weak var writeStepperLabel: UILabel!
     @IBOutlet weak var writeStepper: UIStepper!
+    @IBOutlet weak var backspaceButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,11 +165,8 @@ class MessagesViewController: MSMessagesAppViewController {
     
     func endCurrCharacter() {
         if let text = transcriptionLabel.text {
-            self.activeConversation?.insertText(MORSE_ALPHABET[text] ?? text, completionHandler: { error in
-                if let error = error {
-                    print("Error inserting text: \(error)")
-                }
-            })
+            message.append(MORSE_ALPHABET[text] ?? text)
+            print(message)
         }
         transcriptionLabel.text = " "
     }
@@ -177,5 +175,10 @@ class MessagesViewController: MSMessagesAppViewController {
         defaults.set(sender.value, forKey: "writeSpeed")
         setDotDuration(wpm: sender.value)
         writeStepperLabel.text = "\(Int(sender.value)) wpm"
+    }
+    
+    @IBAction func backspace(_ sender: UIButton) {
+        _ = message.popLast()
+        print(message)
     }
 }
