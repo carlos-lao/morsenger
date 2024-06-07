@@ -7,21 +7,94 @@
 
 import UIKit
 import Messages
+import AVFoundation
+
+let MORSE_ALPHABET: [String:String] = [
+    ".-": "A",
+    "-...": "B",
+    "-.-.": "C",
+    "-..": "D",
+    ".": "E",
+    "..-.": "F",
+    "--.": "G",
+    "....": "H",
+    "..": "I",
+    ".---": "J",
+    "-.-": "K",
+    ".-..": "L",
+    "--": "M",
+    "-.": "N",
+    "---": "O",
+    ".--.": "P",
+    "--.-": "Q",
+    ".-.": "R",
+    "...": "S",
+    "-": "T",
+    "..-": "U",
+    "...-": "V",
+    ".--": "W",
+    "-..-": "X",
+    "-.--": "Y",
+    "--..": "Z",
+    ".----": "1",
+    "..---": "2",
+    "...--": "3",
+    "....-": "4",
+    ".....": "5",
+    "-....": "6",
+    "--...": "7",
+    "---..": "8",
+    "----.": "9",
+    "-----": "0",
+    ".-.-.-": ".",
+    "..--..": "?",
+    "-.-.--": "!"
+]
 
 class MessagesViewController: MSMessagesAppViewController {
+    let defaults = UserDefaults.standard
+    
+    var DOT_DURATION: TimeInterval = 0
+    var pressStartTime: Date?
+    var pressEndTime: Date?
+    var pressDuration: TimeInterval = 0
+    var audioPlayer: AVAudioPlayer?
+    var workItem: DispatchWorkItem?
+    var message: [String] = []
+    
+    @IBOutlet weak var telegraphButton: UIButton!
+    @IBOutlet weak var transcriptionLabel: UILabel!
+    @IBOutlet weak var writeStepperLabel: UILabel!
+    @IBOutlet weak var writeStepper: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setupAudioPlayer()
+        transcriptionLabel.text = " "
+    }
+    
+    func setDotDuration(wpm: Double) {
+        DOT_DURATION = (60/50) * (1/wpm)
+    }
+    
+    func setupAudioPlayer() {
+        if let soundURL = Bundle.main.url(forResource: "telegraph", withExtension: "wav") {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+                audioPlayer?.prepareToPlay()
+                audioPlayer?.numberOfLoops = -1
+            } catch {
+                print("Error loading sound file: \(error)")
+            }
+        }
     }
     
     // MARK: - Conversation Handling
     
     override func willBecomeActive(with conversation: MSConversation) {
-        // Called when the extension is about to move from the inactive to active state.
-        // This will happen when the extension is about to present UI.
-        
-        // Use this method to configure the extension and restore previously stored state.
+        writeStepper.value = (defaults.double(forKey: "writeSpeed") == 0.0) ? 20 : defaults.double(forKey: "writeSpeed")
+        setDotDuration(wpm: writeStepper.value)
+        writeStepperLabel.text = "\(Int(writeStepper.value)) wpm"
     }
     
     override func didResignActive(with conversation: MSConversation) {
@@ -62,5 +135,47 @@ class MessagesViewController: MSMessagesAppViewController {
     
         // Use this method to finalize any behaviors associated with the change in presentation style.
     }
-
+    
+    @IBAction func buttonTouchDown() {
+        pressStartTime = Date()
+        audioPlayer?.play()
+        workItem?.cancel()
+    }
+    
+    @IBAction func buttonTouchUp() {
+        if let startTime = pressStartTime {
+            pressDuration = Date().timeIntervalSince(startTime)
+            audioPlayer?.stop()
+            audioPlayer?.currentTime = 0
+            
+            let label = transcriptionLabel.text ?? " "
+            if pressDuration >= DOT_DURATION * 3 {
+                transcriptionLabel.text = (label == " ") ? "-" : label + "-"
+            } else {
+                transcriptionLabel.text = (label == " ") ? "." : label + "."
+            }
+            
+            workItem = DispatchWorkItem {
+                self.endCurrCharacter()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + (DOT_DURATION * 2), execute: workItem!)
+        }
+    }
+    
+    func endCurrCharacter() {
+        if let text = transcriptionLabel.text {
+            self.activeConversation?.insertText(MORSE_ALPHABET[text] ?? text, completionHandler: { error in
+                if let error = error {
+                    print("Error inserting text: \(error)")
+                }
+            })
+        }
+        transcriptionLabel.text = " "
+    }
+    
+    @IBAction func writeStepperValueChanged(_ sender: UIStepper) {
+        defaults.set(sender.value, forKey: "writeSpeed")
+        setDotDuration(wpm: sender.value)
+        writeStepperLabel.text = "\(Int(sender.value)) wpm"
+    }
 }
