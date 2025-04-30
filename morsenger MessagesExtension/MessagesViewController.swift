@@ -7,6 +7,7 @@
 
 import UIKit
 import Messages
+import SwiftUI
 
 class MessagesViewController: MSMessagesAppViewController {
     
@@ -18,10 +19,33 @@ class MessagesViewController: MSMessagesAppViewController {
     // MARK: - Conversation Handling
     
     override func willBecomeActive(with conversation: MSConversation) {
-        // Called when the extension is about to move from the inactive to active state.
-        // This will happen when the extension is about to present UI.
+        super.willBecomeActive(with: conversation)
         
-        // Use this method to configure the extension and restore previously stored state.
+        // create SwiftUI view
+        let contentView = InputMessageView(conversation: conversation)
+        
+        // Wrap view in a hosting controller
+        let hostingController = UIHostingController(rootView: contentView)
+        
+        // Remove existing child controllers
+        for child in children {
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+        
+        addChild(hostingController)
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(hostingController.view)
+        
+        NSLayoutConstraint.activate([
+            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+        
+        hostingController.didMove(toParent: self)
     }
     
     override func didResignActive(with conversation: MSConversation) {

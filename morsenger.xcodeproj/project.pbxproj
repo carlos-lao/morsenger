@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF1328492DC1FBC90037F235 /* morsenger MessagesExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BF1328482DC1FBC90037F235 /* morsenger MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BF1328492DC1FBC90037F235 /* Morsenger MessagesExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BF1328482DC1FBC90037F235 /* Morsenger MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF13284E2DC1FBC90037F235 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF13284D2DC1FBC90037F235 /* Messages.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				BF1328492DC1FBC90037F235 /* morsenger MessagesExtension.appex in Embed Foundation Extensions */,
+				BF1328492DC1FBC90037F235 /* Morsenger MessagesExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,18 +36,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BF13283F2DC1FBC80037F235 /* morsenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = morsenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF1328482DC1FBC90037F235 /* morsenger MessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "morsenger MessagesExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF13283F2DC1FBC80037F235 /* Morsenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Morsenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF1328482DC1FBC90037F235 /* Morsenger MessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Morsenger MessagesExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF13284D2DC1FBC90037F235 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BF1328582DC1FBCA0037F235 /* Exceptions for "morsenger MessagesExtension" folder in "morsenger MessagesExtension" target */ = {
+		BF1328582DC1FBCA0037F235 /* Exceptions for "morsenger MessagesExtension" folder in "Morsenger MessagesExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = BF1328472DC1FBC90037F235 /* morsenger MessagesExtension */;
+			target = BF1328472DC1FBC90037F235 /* Morsenger MessagesExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -60,7 +60,7 @@
 		BF13284F2DC1FBC90037F235 /* morsenger MessagesExtension */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				BF1328582DC1FBCA0037F235 /* Exceptions for "morsenger MessagesExtension" folder in "morsenger MessagesExtension" target */,
+				BF1328582DC1FBCA0037F235 /* Exceptions for "morsenger MessagesExtension" folder in "Morsenger MessagesExtension" target */,
 			);
 			path = "morsenger MessagesExtension";
 			sourceTree = "<group>";
@@ -92,8 +92,8 @@
 		BF1328402DC1FBC80037F235 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BF13283F2DC1FBC80037F235 /* morsenger.app */,
-				BF1328482DC1FBC90037F235 /* morsenger MessagesExtension.appex */,
+				BF13283F2DC1FBC80037F235 /* Morsenger.app */,
+				BF1328482DC1FBC90037F235 /* Morsenger MessagesExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,9 +109,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BF13283E2DC1FBC80037F235 /* morsenger */ = {
+		BF13283E2DC1FBC80037F235 /* Morsenger */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF13285F2DC1FBCA0037F235 /* Build configuration list for PBXNativeTarget "morsenger" */;
+			buildConfigurationList = BF13285F2DC1FBCA0037F235 /* Build configuration list for PBXNativeTarget "Morsenger" */;
 			buildPhases = (
 				BF13283D2DC1FBC80037F235 /* Resources */,
 				BF13285E2DC1FBCA0037F235 /* Embed Foundation Extensions */,
@@ -124,16 +124,16 @@
 			fileSystemSynchronizedGroups = (
 				BF1328412DC1FBC80037F235 /* morsenger */,
 			);
-			name = morsenger;
+			name = Morsenger;
 			packageProductDependencies = (
 			);
 			productName = morsenger;
-			productReference = BF13283F2DC1FBC80037F235 /* morsenger.app */;
+			productReference = BF13283F2DC1FBC80037F235 /* Morsenger.app */;
 			productType = "com.apple.product-type.application.messages";
 		};
-		BF1328472DC1FBC90037F235 /* morsenger MessagesExtension */ = {
+		BF1328472DC1FBC90037F235 /* Morsenger MessagesExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF1328592DC1FBCA0037F235 /* Build configuration list for PBXNativeTarget "morsenger MessagesExtension" */;
+			buildConfigurationList = BF1328592DC1FBCA0037F235 /* Build configuration list for PBXNativeTarget "Morsenger MessagesExtension" */;
 			buildPhases = (
 				BF1328442DC1FBC90037F235 /* Sources */,
 				BF1328452DC1FBC90037F235 /* Frameworks */,
@@ -146,11 +146,11 @@
 			fileSystemSynchronizedGroups = (
 				BF13284F2DC1FBC90037F235 /* morsenger MessagesExtension */,
 			);
-			name = "morsenger MessagesExtension";
+			name = "Morsenger MessagesExtension";
 			packageProductDependencies = (
 			);
 			productName = "morsenger MessagesExtension";
-			productReference = BF1328482DC1FBC90037F235 /* morsenger MessagesExtension.appex */;
+			productReference = BF1328482DC1FBC90037F235 /* Morsenger MessagesExtension.appex */;
 			productType = "com.apple.product-type.app-extension.messages";
 		};
 /* End PBXNativeTarget section */
@@ -185,8 +185,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BF13283E2DC1FBC80037F235 /* morsenger */,
-				BF1328472DC1FBC90037F235 /* morsenger MessagesExtension */,
+				BF13283E2DC1FBC80037F235 /* Morsenger */,
+				BF1328472DC1FBC90037F235 /* Morsenger MessagesExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -221,7 +221,7 @@
 /* Begin PBXTargetDependency section */
 		BF13284B2DC1FBC90037F235 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF1328472DC1FBC90037F235 /* morsenger MessagesExtension */;
+			target = BF1328472DC1FBC90037F235 /* Morsenger MessagesExtension */;
 			targetProxy = BF13284A2DC1FBC90037F235 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -235,7 +235,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "morsenger MessagesExtension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = morsenger;
+				INFOPLIST_KEY_CFBundleDisplayName = Morsenger;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -260,7 +260,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "morsenger MessagesExtension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = morsenger;
+				INFOPLIST_KEY_CFBundleDisplayName = Morsenger;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -403,6 +403,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Morsenger;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -422,6 +423,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Morsenger;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -446,7 +448,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF1328592DC1FBCA0037F235 /* Build configuration list for PBXNativeTarget "morsenger MessagesExtension" */ = {
+		BF1328592DC1FBCA0037F235 /* Build configuration list for PBXNativeTarget "Morsenger MessagesExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF13285A2DC1FBCA0037F235 /* Debug */,
@@ -455,7 +457,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF13285F2DC1FBCA0037F235 /* Build configuration list for PBXNativeTarget "morsenger" */ = {
+		BF13285F2DC1FBCA0037F235 /* Build configuration list for PBXNativeTarget "Morsenger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF1328602DC1FBCA0037F235 /* Debug */,
